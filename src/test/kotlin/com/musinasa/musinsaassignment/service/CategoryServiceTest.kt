@@ -1,6 +1,7 @@
 package com.musinasa.musinsaassignment.service
 
 import com.musinasa.musinsaassignment.model.CategoryEntity
+import com.musinasa.musinsaassignment.model.CategoryRequest
 import com.musinasa.musinsaassignment.repository.CategoryRepository
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -17,6 +18,16 @@ class CategoryServiceTest(
     @Autowired
     val categoryService: CategoryService
 ) {
+
+    @Test
+    fun `카테고리를 생성한다`() {
+        // given
+        val name = "카테고리"
+        val category = categoryService.save(CategoryRequest(name = name))
+
+        // when
+        assertEquals(category.name, name)
+    }
 
     @Test
     fun `카테고리를 조회한다`() {

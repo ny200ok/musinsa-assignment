@@ -14,6 +14,6 @@ class CategoryEntity(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     var parent: CategoryEntity? = null,
-    @OneToMany(mappedBy = "parent", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "parent", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var subCategories: List<CategoryEntity> = emptyList(),
 )

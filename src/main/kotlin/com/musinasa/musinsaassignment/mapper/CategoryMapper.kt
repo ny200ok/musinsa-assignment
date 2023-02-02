@@ -14,6 +14,10 @@ class CategoryMapper {
             subCategories = it.subCategories.map { category -> convert(category) }.toList()
         )
     }
+
+    fun convert(model: Category): CategoryEntity = CategoryEntity(
+        name = model.name
+    )
 }
 
 val categoryMapper = CategoryMapper()

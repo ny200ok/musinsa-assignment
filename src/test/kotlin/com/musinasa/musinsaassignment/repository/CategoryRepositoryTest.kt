@@ -32,7 +32,7 @@ class CategoryRepositoryTest(
         val parent = categoryRepository.save(CategoryEntity(name = "상위 카테고리"))
 
         val subCategories = listOf(
-            CategoryEntity(name = "하위 카테고리1", parent = parent),
+            CategoryEntity(name = "하위 카테고리1", parent = parent ),
             CategoryEntity(name = "하위 카테고리2", parent = parent),
             CategoryEntity(name = "하위 카테고리2", parent = parent),
         )

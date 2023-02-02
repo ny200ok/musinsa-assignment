@@ -8,3 +8,8 @@ data class Category(
     val name: String,
     val subCategories: List<Category>
 )
+
+data class CategoryRequest(
+    val name: String,
+    val parentId: Long?
+)

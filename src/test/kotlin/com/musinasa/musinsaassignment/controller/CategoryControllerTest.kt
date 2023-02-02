@@ -1,6 +1,9 @@
 package com.musinasa.musinsaassignment.controller
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.musinasa.musinsaassignment.model.Category
 import com.musinasa.musinsaassignment.model.CategoryEntity
+import com.musinasa.musinsaassignment.model.CategoryRequest
 import com.musinasa.musinsaassignment.repository.CategoryRepository
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -53,6 +56,20 @@ class CategoryControllerTest(
         mvc.perform(
             get("/v1/categories/$unknownId")
         ).andExpect(status().isNotFound)
+    }
+
+    @Test
+    fun `카테고리를 생성하는데 성공하면 201 코드를 반환한다`() {
+        // given
+        val category = CategoryRequest(name = "테스트 카테고리")
+
+        // when
+        // then
+        mvc.perform(
+            post("/v1/categories")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(ObjectMapper().writeValueAsString(category))
+        ).andExpect(status().isCreated)
     }
 
 }
